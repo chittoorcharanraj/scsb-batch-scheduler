@@ -1,10 +1,13 @@
 package org.recap.batch.flow;
 
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.recap.PropertyKeyConstants;
@@ -20,7 +23,7 @@ import java.util.Date;
 
 import static org.junit.Assert.assertNotNull;
 
-@RunWith(PowerMockRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 @PrepareForTest
 public class SubmitCollectionExecutionDeciderUT {
 
@@ -29,6 +32,11 @@ public class SubmitCollectionExecutionDeciderUT {
 
     @Value("${" + PropertyKeyConstants.INCLUDE_SUBMIT_COLLECTION_IN_SEQUENCE_JOB + "}")
     private boolean includeSubmitCollectionInSequenceJob;
+
+    @Before
+    public void setup() throws Exception {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     public void testSubmitCollectionExecutionDecider() throws Exception {

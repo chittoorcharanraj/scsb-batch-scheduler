@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.recap.PropertyKeyConstants;
@@ -20,7 +21,7 @@ import java.util.Date;
 
 import static org.junit.Assert.assertNotNull;
 
-@RunWith(PowerMockRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 @PrepareForTest
 public class MatchingAlgorithmExecutionDeciderUT {
 

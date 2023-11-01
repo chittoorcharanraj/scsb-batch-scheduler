@@ -1,10 +1,13 @@
 package org.recap.batch.flow;
 
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.recap.PropertyKeyConstants;
@@ -20,7 +23,7 @@ import java.util.Date;
 
 import static org.junit.Assert.assertNotNull;
 
-@RunWith(PowerMockRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 @PrepareForTest
 public class DataExportExecutionDeciderUT {
 
@@ -29,6 +32,11 @@ public class DataExportExecutionDeciderUT {
 
     @Value("${" + PropertyKeyConstants.INCLUDE_DATA_EXPORT_IN_SEQUENCE_JOB + "}")
     private boolean includeDataExportInSequenceJob;
+
+    @Before
+    public void setup() throws Exception {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     public void testDataExportExecutionDecider() throws Exception {

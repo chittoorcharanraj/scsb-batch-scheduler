@@ -1,9 +1,12 @@
 package org.recap.batch.service;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.recap.PropertyKeyConstants;
@@ -14,7 +17,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 import static org.junit.Assert.assertNotNull;
 
-@RunWith(PowerMockRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 @PrepareForTest
 public class IdentifyPendingRequestServiceUT {
 
@@ -26,6 +29,11 @@ public class IdentifyPendingRequestServiceUT {
 
     @Mock
     IdentifyPendingRequestService mockidentifyPendingRequestService;
+
+    @Before
+    public void setup() throws Exception {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     public void testidentifyPendingRequestService() throws Exception {

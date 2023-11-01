@@ -1,11 +1,14 @@
 package org.recap.batch.service;
 
 import org.apache.commons.lang.StringUtils;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.recap.PropertyKeyConstants;
 import org.recap.ScsbCommonConstants;
@@ -21,8 +24,8 @@ import java.util.Date;
 import static org.junit.Assert.assertNotNull;
 
 
-@RunWith(PowerMockRunner.class)
 
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class DeletedRecordsExportServiceUT {
 
     @Mock
@@ -40,13 +43,16 @@ public class DeletedRecordsExportServiceUT {
     @Mock
     RestTemplate restTemplate;
 
-
-
     @Value("${" + PropertyKeyConstants.SCSB_ETL_URL + "}")
     private String scsbEtlUrl;
 
     Date createdDate = new Date(System.currentTimeMillis());
     String exportStringDate= "2020-07-07";
+
+    @Before
+    public void setup() throws Exception {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     public void testDeletedRecordsExportService() throws Exception {
